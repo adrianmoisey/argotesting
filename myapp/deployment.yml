@@ -25,7 +25,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "while true; do timeout 0.5s yes >/dev/null; sleep 0.5s; done"
+            - "while true; do env; sleep 10; done"
         - name: hamster2
           image: ubuntu
           resources:
@@ -35,4 +35,4 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "while true; do timeout 0.5s yes >/dev/null; sleep 0.5s; done"
+            - "while true; do env; sleep 10; done"
