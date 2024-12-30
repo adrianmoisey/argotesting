@@ -25,14 +25,12 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "while true; do env; sleep 10; done"
-        - name: hamster2
-          image: ubuntu
-          resources:
-            requests:
-              cpu: 100m
-              memory: 50Mi
-          command: ["/bin/sh"]
-          args:
-            - "-c"
-            - "while true; do env; sleep 10; done"
+            - "while true; do echo date; cat /etc/secret/*; sleep 10; done"
+          volumeMounts:
+          - name: secret-volume
+            mountPath: "/etc/secret"
+            readOnly: true
+    volumes:
+    - name: secret-volume
+      secret:
+        secretName: my-secret
