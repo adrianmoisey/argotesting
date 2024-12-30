@@ -30,7 +30,7 @@ spec:
           - name: secret-volume
             mountPath: "/etc/secret"
             readOnly: true
-    volumes:
-    - name: secret-volume
-      secret:
-        secretName: my-secret
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: my-secret
