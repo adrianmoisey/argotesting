@@ -25,12 +25,18 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "while true; do echo date; cat /etc/secret/*; sleep 10; done"
+            - "while true; do date; cat /etc/secret/*; sleep 10; done"
           volumeMounts:
           - name: secret-volume
             mountPath: "/etc/secret"
+            readOnly: true
+          - name: secret-volume-raw
+            mountPath: "/etc/secret-raw"
             readOnly: true
       volumes:
       - name: secret-volume
         secret:
           secretName: example-secret
+      - name: secret-volume-raw
+        secret:
+          secretName: raw-secret
