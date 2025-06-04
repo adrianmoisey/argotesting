@@ -1,0 +1,11 @@
+apiVersion: datadoghq.com/v1alpha1
+kind: DatadogMetric
+metadata:
+  name: hpa-test
+  labels:
+    inject-custom-salesloft-values: enabled
+  namespace: default
+  annotations:
+    query: |
+      CLUSTER_NAME
+      CELL
